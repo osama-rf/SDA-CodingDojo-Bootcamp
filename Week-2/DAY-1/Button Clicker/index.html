@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojonary</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!-- This is the navbar of the Site -->
+        <div class="navbar">
+            <h1 id="nav-title">Dojonary</h1>
+            <input type="text" id="searchInput" placeholder="Search">
+            <button onclick="isLoggedIn(this)" id="accessBtn">Login</button>
+        </div>
+
+        <!-- This is the main section -->
+        <div class="main">
+
+            <div class="Left-Side">
+                <div class="left-side-container">
+                    <div class="section">
+
+                        <div class="left-side-section">
+                            <h1 id="section-title">ninja</h1>
+                            <span id="section-subtitle">noun</span>
+                            <p id="section-defenition">Plural: ninjas</p>
+                            <button onclick="like(this)" id="alikeBtn">13 Likes</button>
+                        </div>
+
+                        <div class="right-side-section"></div>
+                        <p class="text-center">A practitioner skilled in the
+                            <a href="#">Japanese</a> art of
+                            <a href="#">ninjutsu</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="section">
+
+                    <div class="left-side-section">
+                        <h1 id="section-title">ninja</h1>
+                        <span id="section-subtitle">noun</span>
+                        <p id="section-defenition">Plural: ninjas</p>
+                        <button onclick="like(this)" id="alikeBtn">37 Likes</button>
+                    </div>
+
+                    <div class="right-side-section"></div>
+                    <p class="text-center">A <a href="#">programmer</a> who breaks down proplems
+                        with <a href="#">zen</a>-like focus
+                    </p>
+
+
+                </div>
+            </div>
+
+            <!-- This is the right Side Container  -->
+            <div class="right-side-container">
+                <div class="section-1">
+                    <p> Dojonary is defined by <b>YOU</b></p>
+                    <button onclick="remove(this)" id="definitionBtn">Add Definition</button>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+#wrapper {
+    width: 60%;
+    margin: 0px auto;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#logoPic {
+    background-color: aquamarine;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+
+.searchIn {
+    width: 400px;
+    padding: 5px;
+    border: 0px;
+}
+
+.searchIcon {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+}
+
+.Btn {
+    border: 0px;
+    background-color: white;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.cartBtn {
+    background: white;
+    border: 0px;
+    width: 30px;
+}
+
+.carts {
+    width: 30px;
+}
+
+#siteSection {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 4px solid;
+}
+
+.head {
+    text-align: center;
+}
+
+.leftSide {
+    display: flex;
+    max-height: 325px;
+
+}
+
+.discover {
+    background-color: rgb(65, 231, 215);
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    width: 200px;
+}
+
+.img {
+    height: 200px;
+}
+
+.desc {
+    background-color: rgb(65, 231, 215);
+    color: white;
+    font-size: 38px;
+    text-align: center;
+    padding-top: 14px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    max-width: 1000px;
+}
+
+.rightSide {
+    margin-left: 10px;
+}
+
+.footer {
+    display: flex;
+}
+
+.footer {
+    background-color: cyan;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    max-width: 1000px;
+    flex-direction: row;
+}
+
+.footer .image-item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.footer .image-item .image img {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+.footer .image-item .image {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    justify-content: center;
+}
+
+.footer .image-item p {
+    text-align: center;
+    flex: 1
+}
+
+.accept {
+    display: flex;
+    background-color: whitesmoke;
+    bottom: 0;
+    position: fixed;
+}
+
+.acceptBtn {
+    background-color: green;
+}
+
+body {
+    min-height: 100vh;
+}

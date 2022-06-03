@@ -1,0 +1,97 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar {
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: auto;
+    height: auto;
+    text-align: left;
+}
+
+#accessBtn {
+    background-color: aqua;
+    box-shadow: 5px 1px 3px 2px black;
+    width: 8%;
+    box-shadow: 5px 1px 3px 2px black;
+}
+
+#searchInput {
+    border: 3px black;
+    width: 220px;
+    box-shadow: 5px 1px 3px 2px black;
+}
+
+
+.section {
+    border: 2px black solid;
+    display: flex;
+    margin: 10px;
+}
+
+.main {
+    display: flex;
+    margin-top: ;
+    padding: 10px;
+    justify-content: space-around;
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+
+.left-side-section {
+    text-align: center;
+    padding: 22px;
+}
+
+#alikeBtn {
+    background-color: yellow;
+    font-weight: bold;
+    margin-top: 18px;
+    width: 75px;
+    height: 40px;
+}
+
+.right-side-container {
+    width: auto;
+    height: auto;
+    /* border: 3px black solid; */
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.text-center {
+    padding: 70px 0;
+    text-align: center;
+    font-size: large;
+    font-family: sans-serif;
+}
+
+.section-1 {
+    text-align: center;
+    border: 3px black solid;
+    padding: 17px;
+    padding-bottom: 79px;
+    padding-top: 10px;
+}
+
+#definitionBtn {
+    align-items: baseline;
+    background-color: aquamarine;
+    font-weight: bold;
+    box-shadow: 2px 1px 3px 2px black;
+    margin-top: 10px;
+    padding: auto;
+
+}
+
+.right-side-section {
+    text-align: center;
+    padding: 70px 0;
+}
