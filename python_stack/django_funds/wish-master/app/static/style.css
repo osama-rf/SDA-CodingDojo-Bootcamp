@@ -1,0 +1,13 @@
+button {
+    border-radius: 0%;
+    border-width: 3;
+    border-style: solid;
+    border-color: black;
+    box-shadow: 3px 3px 0px 0px #000000;
+    width: 150px;
+    margin: 0px 10px;
+}
+
+.wish_button {
+    width: 100px;
+}

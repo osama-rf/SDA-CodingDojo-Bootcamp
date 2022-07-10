@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title>Books Home</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome, {{ current_user.first_name }}!</h1>
+        <div class="links">
+            <a href="/books/add">Add Book and Review</a> | <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="main-body">
+        <div>
+            <h3>Recent Book Reviews:</h3>
+            <ul>
+                {% for review in last_three_reviews %}
+                <li>
+                    <a href="/books/{{ review.book.id }}">{{ review.book.title }}</a>
+                    <ul>
+                        <li>Rating: {{ review.stars }} stars</li>
+                        <li><a href="/users/{{ review.reviewer.id }}">{{ review.reviewer.first_name }}</a> says: <br>{{ review.review }}</li>
+                        <li>Posted on {{ review.created_at }}</li>
+                        {% if current_user == review.reviewer %}
+                        <li><a href="/reviews/{{review.id}}/delete">Delete this review</a></li>
+                        {% endif %}
+                        <br>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h3>Books with Reviews:</h3>
+            <div class='box'>
+                <ul>
+                    {% for book in books_with_reviews %}
+                    <li><a href="/books/{{ book.id }}">{{ book.title }}</a></li><br>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

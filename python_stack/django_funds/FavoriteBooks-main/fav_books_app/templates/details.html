@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="header">
+        <h3>Welcome, {{userid.first_name}}!</h3>
+        <a href="/logout">Log Out</a>
+    </div>
+    <hr>
+    <div class="wrapper">
+        <div class="book_details">
+                {% if userid.id != details.uploaded_by.id%}
+                    <h4>{{details.title}}</h4>
+                    <p>Added by: {{details.uploaded_by.first_name}} {{details.uploaded_by.last_name}}</p>
+                    <p>Added on: {{details.created_at}}</p>
+                    <p>Last updated: {{details.updated_at}}</p>
+                    <p>Description: {{details.description}}</p>
+                {% else %}
+                    <form action="/books/{{details.id}}/edit" method="post">
+                        {% csrf_token %}
+                        <h4><input type="text" name = 'title' value = '{{details.title}}'></h4>
+                        <p>Added by: {{details.uploaded_by.first_name}} {{details.uploaded_by.last_name}}</p>
+                        <p>Added on: {{details.created_at}}</p>
+                        <p>Last updated: {{details.updated_at}}</p>
+                        <p>Description: <textarea name="description" id = 'description' cols="35" rows="5">{{details.description}}</textarea></p>
+                        <button type="submit" class="double_button">Update</button> <button type="submit" formaction="/books/{{details.id}}/delete">Delete</button>
+                    </form>
+                {% endif %}
+
+        </div>
+        <div class="likes">
+            <h4>Users Who Like This Book:</h4>
+            <ul>
+            {%for detail in details.users_who_like.all%}
+                <li>{{detail.first_name}} {{detail.last_name}}
+                    {%if userid not in details.users_who_like.all%}
+                        <p><a href="/books/{{details.id}}/favorite">Add to favorites</a></p>
+                    {%elif userid == detail%}
+                        <a href="/books/{{details.id}}/unfavorite">Un-Favorite</a></li>
+                    {%endif%}
+            {%empty%}
+                <p>No users have made this book a favorite yet!</p>
+                <p><a href="/books/{{details.id}}/favorite">Add to favorites</a></p>
+            {%endfor%}
+            </ul>
+        </div>
+        <a href="/books" id = "go_back">Go Back</a>
+    </div>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

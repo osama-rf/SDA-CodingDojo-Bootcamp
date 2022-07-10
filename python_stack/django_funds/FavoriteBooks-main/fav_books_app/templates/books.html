@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="header">
+        <h3>Welcome, {{userid.first_name}}!</h3>
+        <a href="/logout">Log Out</a>
+    </div>
+    <hr>
+    <div class="wrapper">
+        <div class="add_book">
+            <form action="/add_a_book" method=POST>
+            {% csrf_token %}
+                <h4>Add a Favorite Book</h4>
+                <p>Title <input type="text" name='title'></p>
+                <p>Description  <textarea name="description" id = 'description' cols="30" rows="5"></textarea></p>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div class="list_books">
+            <h4>All Books</h4>
+            {% for books in booklist%}
+                <p class = 'book_title'><a href="/books/{{books.id}}">{{books.title}}</a></p>
+                <p>(Added by {{books.uploaded_by.first_name}} {{books.uploaded_by.last_name}})</p>
+                    {% if userid not in books.users_who_like.all %}
+                        <p><a href="/books/{{books.id}}/favorite">Add to favorites</a></p>
+                    {%else%}
+                        <p class = 'italic'>this is one of your favorites</p>
+                    {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

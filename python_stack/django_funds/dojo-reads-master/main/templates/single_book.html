@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    <div class="header">
+        <div class="book">
+            <h2>{{ book.title }}</h1>
+            <p>Author: {{ book.author.full_name }}</p>
+        </div>
+        <div class="links">
+            <a href="/books">Home</a> | <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="main-body">
+        <div>
+            <h3>Reviews:</h3>
+            <ul>
+                {% for review in reviews %}
+                <li>
+                    <p>Rating: {{ review.stars }} stars</p>
+                    <p><a href="/users/{{ review.reviewer.id }}">{{ review.reviewer.first_name }}</a> says: {{ review.review }}</p>
+                    <p>Posted on {{ review.created_at }}</p>
+                    {% if user == review.reviewer %}
+                    <a href="/reviews/{{review.id}}/delete">Delete this review</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h3>Add a Review:</h3>
+            <ul class="errors">
+                {% for message in messages %}
+                <li><p style="color: red;">{{ message }}</p></li>
+                {% endfor %}
+            </ul>
+            <form action="/create_review" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="book_id" value={{ book.id }}>
+                <div>
+                    <label>Review:</label>
+                    <textarea name="review" cols="50" rows="7"></textarea>
+                </div>
+                <div>
+                    <label>Rating:</label>
+                    <select name="stars">
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                    </select> stars
+                </div>
+                <button>Submit Review</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

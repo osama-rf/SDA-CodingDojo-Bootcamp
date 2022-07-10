@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Wish App</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container d-flex justify-content-between mt-4 ">
+        <div class="container">
+
+            <h1>Hello {{user.fname}}!</h1>
+        </div>
+
+        <div class="container d-flex justify-content-evenly align-items-center">
+            <a class="w-25" href="/logout">Log out</a>
+            <a class="btn btn-white text-dark border border-2 border-dark" href="/state" role="button">View State</a>
+            <a class="btn btn-white text-dark border border-2 border-dark" href="/wish/new" role="button">Make a wish!</a>
+        </div>
+    </div>
+
+        <div class="m-4">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show"
+                role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    
+        <div class="container">
+            <p>Your wish list:</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Date added</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for wish in your_wish %}
+                    <tr>
+                        <td scope="row">{{wish.wish}}</td>
+                            <td>{{wish.created_at}}</td>
+                            <td>
+                                <form action="/" method="POST">
+                                    {% csrf_token %}
+                                    <a href="/wish/{{wish.id}}/destroy">Remove</a> 
+                                    <a href="/wish/{{wish.id}}/edit">Edit</a> 
+                                    <a href="/wish/granted/{{wish.id}}">Add</a> 
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+<hr>
+        <div class="container">
+            <p>Granted Wish:</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Wisher</th>
+                        <th>Date addedd</th>
+                        <th>Date Granted</th>
+                        <th>Likes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for grant in granted_wish%}
+                        <tr>
+                            <td scope="row">{{grant.wish.wish}}</td>
+                            <td>{{grant.wish.user.fname}}</td>
+                            <td>{{grant.wish.created_at}}</td>
+                            <td>{{grant.created_at}}</td>
+                            <td>{{grant.like.all | length}}</td>
+                            <td>
+                                {%if grant.wish.user.id == request.session.user_id%}
+                                    <p>You already liked it</p>
+                                {%else%}
+                                <a href="/wish/like/{{grant.id}}">Like</a>
+                                {%endif%}
+                            </td>
+                        </tr>
+                        {%endfor%}
+                </tbody>
+            </table>
+        </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

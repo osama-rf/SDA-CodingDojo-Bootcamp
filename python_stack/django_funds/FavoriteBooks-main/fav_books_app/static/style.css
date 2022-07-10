@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    /* outline: 1px dashed red; */
+}
+
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+}
+
+hr {
+    width: 800px; 
+    height: 2px;
+    background-color: black;
+    margin-left: 20px;
+}
+.wrapper {
+    width: 800px;
+    padding: 20px;
+    position: relative;
+}
+
+.reg_page{
+    width: 800px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40px;
+}
+
+.reg_page h2{
+    text-align: center;
+    margin: 10px;
+}
+
+.registration button {
+    margin-left: 80%;
+}
+
+.login button {
+    margin-left: 84%;
+}
+
+.registration {
+    display: inline-block;
+    width: 300px;
+    vertical-align: top;
+}
+
+.login{
+    display: inline-block;
+    width: 300px;
+    vertical-align: top;
+}
+
+
+.registration p, .login p, .registration input, .login input {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.add_book, .book_details {
+    display: inline-block;
+    width: 350px;
+    vertical-align: top;
+}
+
+.add_book p, .add_book input {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+li {
+    margin-left: 50px;
+}
+h4 {
+    margin-bottom: 10px;
+}
+
+.list_books, .likes {
+    display: inline-block;
+    vertical-align: top;
+    width: 350px;
+    margin-left: 50px;
+}
+
+#go_back {
+    position: absolute;
+    bottom: 10px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.book_title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.book_details p {
+    margin-bottom: 5px;
+}
+.book_details input {
+    width: 80%;
+}
+
+.book_details textarea {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.book_details button {
+    display: inline-block;
+    width: 75px;
+    margin-left:40px;
+}
+

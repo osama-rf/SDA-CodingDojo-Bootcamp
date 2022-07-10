@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Stats</title>
+</head>
+
+<body>
+    <div class="container mx-3">
+        <div class="row m-3">
+            <div class="col pl-0">
+                <div class="row py-3">
+                    <div class="col-9 pl-0">
+                        <h1>Hello, {{request.session.user_name}}! These are your stats!</h1>
+                    </div>
+                    <div class="col text-right pr-0">
+                        <a href="/wishes">Dashboard</a>
+                        <a href="/logout" class="mx-3">Logout</a></div>
+                </div>
+            </div>
+        </div>
+
+        <p style="font-weight: bold;">Total wishes granted so far for all users: {{ total_granted_wishes.count }}</p>
+        <p>Your granted wishes: {{ user_granted_wishes.count }}</p>
+        <p>Your pending wishes: {{ user_pending_wishes.count }}</p>
+    </div>
+</body>
+
+</html>

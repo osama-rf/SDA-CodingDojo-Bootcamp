@@ -1,0 +1,27 @@
+body{
+    margin: auto;
+    padding-top: 5%;
+    width: 900px;
+}
+.head{
+    width: 170px;
+}
+div{
+    margin: auto;
+    margin-bottom: 5%;
+    padding: 10px 20px ;
+    border: 2px solid black;
+    
+}
+.time{
+    font-size: xx-large;
+    width: 500px;
+    text-align: center;
+    padding: 20px 100px  ;
+}
+div h1{
+    
+    margin: 0px;
+    padding: 0px;
+    font-size: 55px;
+}

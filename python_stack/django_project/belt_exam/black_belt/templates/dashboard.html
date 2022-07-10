@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Dashboard</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container d-flex justify-content-between mt-4 ">
+        <div class="container">
+
+            <h1>Hello {{user.fname}}!</h1>
+        </div>
+
+        <div class="container d-flex justify-content-evenly align-items-center">
+            <a class="w-25" href="/logout">Log out</a>
+            <a class="btn btn-white text-dark border border-2 border-dark" href="/jobs/new" role="button">New Job!</a>
+        </div>
+    </div>
+
+    <div class="m-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show"
+            role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <p>Every one list:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Job</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in your_job%}
+                <tr>
+                    <td scope="row">{{job.job}}</td>
+                    <td>{{wish.created_at}}</td>
+                    <td>
+                        <form action="/" method="POST">
+                            {% csrf_token %}
+                            <a href="/jobs/{{job.id}}">View</a>
+                            <a href="#">Remove</a>
+                            <a href="#">Edit</a>
+                            <a href="#">Granted</a>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="container">
+        <p>{{user.fname}} job:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Job</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in your_job%}
+                <tr>
+                    <td scope="row">{{job.job}}</td>
+                    <td>
+                        {% csrf_token %}
+                        <a href="#">View</a>
+                            <a href="#">Done</a>
+                            <a href="#">Give Up</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

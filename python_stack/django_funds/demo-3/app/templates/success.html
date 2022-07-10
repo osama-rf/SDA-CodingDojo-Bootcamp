@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/signout">signout</a>
+    <p>Welcome <a href="/user_profile">{{user.name}}</a></p>
+    <h1>Movies</h1>
+    {% for movie in movies%}
+        <img src="{{movie.pic}}" alt="pic" style="width:200px;">
+    <p><a href="/movie_profile/{{movie.id}}">{{movie.movie_name}}</a> <a href="/add/{{movie.id}}">+</a></p>
+    {% if user not in movie.liked_by.all%}
+    <p><a href="/like/{{movie.id}}">&#9829;</a></p>
+    {% else %}
+    <p><a href="/dislike/{{movie.id}}">💔</a></p>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>
