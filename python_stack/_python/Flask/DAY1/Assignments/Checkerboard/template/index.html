@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chekerboard</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            }
+
+        .flex{
+            display: flex;
+        }
+
+        .item{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    {%for i in range(0,colums)%} 
+    <div class="flex">
+        {%for j in range(0,rows)%}
+        <div 
+        {% if ((i + j)%2+1) == 1%}
+            {% if color1 %}
+                style="background-color: {{color1}}"
+            {% else %}
+                style="background-color: black"
+            {%endif%}
+        {%else%}
+            {% if color2 %}
+                style="background-color: {{color2}}"
+            {% else %}
+                style="background-color: rgb(148, 49, 49)"
+            {%endif%}
+        {%endif%}
+        class="item">
+        </div>
+        {%endfor%}
+    </div>
+    {%endfor%}
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Login and Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+    <div class="container p-3">
+        <h2>Welcome! Sign in to make a wish!</h2>
+        <div class="text-danger">
+            {% if messages %}
+            <ul class="list-unstyled">
+                {% for message in messages %}
+                <li class="text-danger">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="m-3 p-3 border border-dark" style="width: 320px">
+                <p class="text-center">Register</p>
+                <form action="/register" method="POST">
+                    {% csrf_token %}
+                    <table class="w-100">
+                        <tr>
+                            <td>First Name</td>
+                            <td><input type="text" name="first_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td><input type="text" name="last_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="text" name="password"></td>
+                        </tr>
+                        <tr>
+                            <td>Confirm pw</td>
+                            <td><input type="text" name="confirm_password"></td>
+                        </tr>
+                    </table>
+                    <div class="float-right my-2 mx-3">
+                        <button>Register</button></div>
+                </form>
+            </div>
+            <div class="m-3 p-3 border border-dark" style="width: 320px; height: 200px">
+                <p class="text-center">Login</p>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <table class="w-100">
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="text" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="text" name="password"></td>
+                        </tr>
+                    </table>
+                    <div class="float-right my-2 mx-3">
+                        <button>Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

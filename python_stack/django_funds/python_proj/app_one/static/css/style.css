@@ -1,0 +1,59 @@
+body {
+    width: 970px;
+    margin: auto;
+    margin-top: 100px;
+    color: darkslategray;
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+button {
+    padding: 10px;
+    border: 1px solid darkslategray;
+    border-radius: 5px;
+    color: black;
+    margin-left: 10px;
+    background-color: darkslategray;
+}
+form {
+	padding: 20px;
+    flex: 400px;
+}
+p {
+    margin:10px;
+	padding:10px;
+	font-weight: bold;
+}
+table{
+    border: 1px solid black;
+}
+table td, table th {
+    
+    padding: 10px;
+    border-radius: 5px;
+}
+table tr:nth-child(even){background-color: #f2f2f2;}
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+ul li {
+    margin-left: 10px;
+}
+a {
+    color:darkslategray;
+    padding: 10px;
+}
+.btn  {
+    padding: 10px;
+    border: 1px solid darkslategray;
+    border-radius: 5px;
+    color: black;
+    margin-left: 10px;
+    text-decoration: none;
+    background-color: darkslategray;
+}

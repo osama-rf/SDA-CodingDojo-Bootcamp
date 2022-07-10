@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Update</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container d-flex justify-content-around my-3">
+        <h1 class="display-5 flex-grow-1 text-center">Edit Show {{show.id}}</h1>
+        <a href="/shows">Go Back</a>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+    <form action="/shows/{{show.id}}/update" method="POST" class="container my-3">
+        {% csrf_token %}
+        <div class="mb-3 w-50 mx-auto">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" value="{{show.title}}">
+        </div>
+        <div class="mb-3 d-flex w-50 mx-auto justify-content-between">
+            <div class="col-5">
+                <label for="network" class="form-label">Network</label>
+                <input type="text" class="form-control" name="network" value="{{show.network}}">
+            </div>
+            <div class="col-5">
+                <label for="release_date" class="form-label">Release Date</label>
+                <input type="date" class="form-control h-50" name="release_date"
+                    value="{{show.release_date|date:'Y-m-d'}}">
+            </div>
+        </div>
+
+        <div class="mb-3 w-50 mx-auto">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" rows="3">{{show.description}}</textarea>
+        </div>
+
+        <div class="mb-3 d-flex flex-column align-items-center">
+            <button type="submit" class="btn btn-white text-dark border border-2 border-dark">Update</button>
+            <a href="/shows/{{show.id}}" class="my-3">Go to Show</a>
+        </div>
+    </form>
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

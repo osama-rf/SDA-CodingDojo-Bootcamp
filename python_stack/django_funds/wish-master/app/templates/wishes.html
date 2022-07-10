@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Wishes</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row py-3">
+            <div class="col pl-0">
+                <h1>Hello, {{request.session.user_name}}!</h1>
+            </div>
+            <div class="col text-right pr-0">
+                <a href="logout">Logout</a>
+                <a href="/wishes/stats"><button type="button">View
+                        stats</button></a>
+                <a href="/wishes/new"><button type="button">Make a
+                        wish!</button></a>
+            </div>
+        </div>
+        <div class="row">
+            <p>Your wish list:</p>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Item</th>
+                    <th>Date added</th>
+                    <th>Actions</th>
+                </tr>
+                {%for p in pending_wishes%}
+                <tr>
+                    <td>{{p.item}}</td>
+                    <td>{{p.created_at}}</td>
+                    <td>
+                        <a href="delete_wish/{{p.id}}">Remove</a> |
+                        <a href="wishes/edit/{{p.id}}">Edit</a> |
+                        <a href="grant_wish/{{p.id}}">Granted!</a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div class="row">
+            <p>Granted wishes:</p>
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>Item</th>
+                    <th>Wisher</th>
+                    <th>Date added</th>
+                    <th>Date Granted</th>
+                    <th>Likes</th>
+                    <th>Actions</th>
+                </tr>
+                {%for g in granted_wishes%}
+                <tr>
+                    <td>{{g.item}}</td>
+                    <td>{{g.user.first_name}}</td>
+                    <td>{{g.created_at}}</td>
+                    <td>{{g.updated_at}}</td>
+                    <td>{{ g.likes.all.count }}</td>
+                    <td>{% if user != g.user %}<a href="like/{{g.id}}">Like</a>{%endif%}</td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

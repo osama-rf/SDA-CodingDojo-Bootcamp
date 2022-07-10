@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Edit</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container d-flex justify-content-between align-items-center mt-4 ">
+        <h1 class="flex-grow-1">Hello {{user.fname}}! Update a Job!</h1>
+        <a href="/logout">Log out</a>
+    </div>
+
+    <div class="m-4 w-50 ">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show"
+            role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <form action="/jobs/create" method="POST" class="ms-4 border border-3 border-dark w-50">
+        {% csrf_token %}
+
+        <div class="m-4">
+            <label for="job" class="form-label">Title:</label>
+            <input type="text" class="form-control" name="job" value="{{job.job}}">
+        </div>
+
+        <div class="m-4">
+            <label for="desc" class="form-label">Description:</label>
+            <input type="text" class="form-control" name="desc" value="{{job.desc}}">
+        </div>
+
+        <div class="m-4">
+            <label for="loc" class="form-label">Location:</label>
+            <input type="text" class="form-control" name="loc" value="{{job.loc}}">
+        </div>
+
+        <div class="m-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-white text-dark border border-2 border-dark mx-4" href="/dashboard"
+                role="button">Cancel</a>
+            <button type="submit" class=" btn btn-white text-dark border border-2 border-dark">Submit</button>
+        </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

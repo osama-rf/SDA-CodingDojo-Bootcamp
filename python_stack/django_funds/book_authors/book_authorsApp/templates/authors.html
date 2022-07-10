@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .wrapper {
+        outline: 3px black solid;
+        margin: 0% auto;
+        width: 80%;
+        display: flex;
+    }
+
+    .left form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left {
+        outline: 3px black solid;
+        width: 550px;
+        height: 400px;
+    }
+
+
+    table, th, td {
+        border: 1px solid black;
+        margin-left: 90px;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+
+        <div class="left">
+            <h1>Add a Author</h1>
+            <form action="/creata" method="POST">
+                {%csrf_token%} 
+                <label for="fname">First Name:</label>
+                <input type="text" name="fname">
+                <label for="lname">Last Name: </label>
+                <input type="text" name="lname">
+                <label for="notes">Notes</label>
+                <textarea name="notes" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+        <div class="right">
+
+            <table style="width:100%">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                {%for author in newAuthors%}
+                <tr>
+                    <td>{{author.id}}</td>
+                    <td>{{author.fname}} {{author.lname}}</td>
+                    <td> <a href="/author/{{author.id}}">View</a></td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

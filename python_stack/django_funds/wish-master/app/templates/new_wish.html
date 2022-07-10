@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-right">
+            <a href="/logout">Logout</a></div>
+        <h1>Hello, {{request.session.user_name}}! Make a wish!</h1>
+        {% if messages %}
+        <ul class="list-unstyled">
+            {% for message in messages %}
+            <li class="text-danger">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="p-3 my-5 border border-dark" style="width: 400px">
+            <form action="create_wish" method="POST">
+                {%csrf_token%}
+                <table class="w-100">
+                    <tr>
+                        <td>Item</td>
+                        <td><input type="text" name="item"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><input type="text" name="description"></td>
+                    </tr>
+                </table>
+                <div class="my-2 ml-5 pl-4">
+                    <a href="/wishes"><button type="button" class="wish_button">Cancel</button></a>
+                    <button class="wish_button">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

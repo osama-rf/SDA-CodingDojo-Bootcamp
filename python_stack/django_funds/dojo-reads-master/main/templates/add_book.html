@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title>Add Book and Review</title>
+</head>
+<body>
+    <div class="header">
+        <h2>Add a New Book Title and a Review:</h3>
+        <div class="links">
+            <a href="/books">Home</a> | <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <ul class="errors">
+        {% for message in messages %}
+        <li><p style="color: red;">{{ message }}</p></li>
+        {% endfor %}
+    </ul>
+    <div class="main-body">
+        <form action="/create_book" method="post">
+            {% csrf_token %}
+            <div>
+                <label>Book Title:</label>
+                <input type="text" name="title">
+            </div>
+            <div>
+                <label>Author:</label>
+                <p>Choose from the list:
+                    <select name="author_select">
+                        <option selected value="none">Select an author</option>
+                        {% for author in all_authors %}
+                        <option value="{{ author.full_name }}">{{ author.full_name }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <p>Or add a new author:
+                    <input type="text" name="author_text">
+                </p>
+            </div>
+            <div>
+                <label>Review:</label>
+                <textarea name="review" cols="50" rows="7"></textarea>
+            </div>
+            <div>
+                <label>Rating:</label>
+                <select name="stars">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select> stars
+            </div>
+            <button>Add Book and Review</button>
+        </form>
+    </div>
+</body>
+</html>
