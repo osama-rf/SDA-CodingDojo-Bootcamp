@@ -1,13 +1,12 @@
 public class Main {
 
-    public void SumData(int one, int two)
-    {
-        System.out.print(one + two);
-    }
     public static void main(String[] args) {
+        Book java_book = new Book("JAVA", "OSAMA", 2022, 890);
 
-        Main m = new Main();
-        m.SumData(9, 5);
+        java_book.OpenBook();
+//        boolean result = java_book.MoveToPage(200);
+//        System.out.print(result);
+        java_book.PrintBookInfo();
+        java_book.CloseBook();
     }
-
 }
